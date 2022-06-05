@@ -84,7 +84,7 @@ Person &Person::operator=(const Person &arr) {
     return *this;
 }
 
-bool Person::validate(std::string _id) {
+bool Person::validate( std::string _id) {
     if (_id.size() >= 8 && _id.size() <= 10) {
         int yearOfSignIn = ((_id[0] - 48) * 10 + (_id[1] - 48));//the different between (char)'1' and (int)1 is 48
         int indexOfNotNum = 2;

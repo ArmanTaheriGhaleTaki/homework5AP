@@ -41,7 +41,8 @@ public:
 
     Person &operator=(const Person &arr);
 
-    bool validate(std::string _id);
+    bool validate( std::string _id);
+
     double calculateSalary();
 };
 

@@ -1,11 +1,7 @@
-//
-// Created by TAHER on 5/30/22.
-//
-
 #ifndef HOMEWORK5AP_STUDENT_H
 #define HOMEWORK5AP_STUDENT_H
 
-#include "Student.h"
+#include "Person.h"
 #include "Course.h"
 
 
@@ -16,10 +12,17 @@ public:
     Student(const Student &arr);
 
     ~Student();
+    friend std::ostream &operator<<(std::ostream &output,const Student &D);
 
+    friend std::istream & operator >>( std::istream  &in, Student &D );
+    bool validate( std::string& _id);
+
+    double gpa();//it's not compeleted
+    double calculateSalary();
 private:
     int numOfCourses;
     Course *courses;
     std::string FieldOfStudy;
+};
 
-#endif //HOMEWORK5AP_STUDENT_H
+#endif
