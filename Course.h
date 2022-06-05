@@ -15,7 +15,12 @@ public:
 
     ~Course();
 
-    void set_name(std::string arr);
+    friend std::ostream &operator<<(std::ostream &output,const Course &D);
+
+    friend std::istream & operator >>( std::istream  &in, Course &D );
+
+//    friend std::ostream &operator<<(std::ostream &os, const Complex &dt);
+    void set_name(const std::string &arr);
 
     void set_unit(int arr);
 
@@ -23,7 +28,7 @@ public:
 
     std::string get_name();
 
-    int get_unit();
+    int get_unit() const;
 
     double get_mark();
 

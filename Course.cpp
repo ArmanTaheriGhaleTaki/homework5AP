@@ -8,6 +8,12 @@ Course::Course() {
     *mark = 0;
 }
 
+
+std::ostream &operator<<(std::ostream &output, const Course &D) {
+    output << "name : " << D.name << "\tunit : " << D.unit << "\tmark : " << *(D.mark) << "\n";
+    return output;
+}
+
 Course::Course(const Course &arr) {
     this->name = arr.name;
     this->unit = arr.unit;
@@ -18,7 +24,7 @@ Course::~Course() {
     delete this->mark;
 }
 
-void Course::set_name(std::string arr) {
+void Course::set_name(const std::string &arr) {
     this->name = arr;
 }
 
@@ -34,10 +40,20 @@ std::string Course::get_name() {
     return name;
 }
 
-int Course::get_unit() {
+int Course::get_unit() const {
     return unit;
 }
 
 double Course::get_mark() {
     return *mark;
+}
+
+std::istream & operator >>(std::istream &in, Course &D) {
+    std::cout<< "Enter name\n";
+    getline(std::cin,D.name);
+    std::cout<< "Enter mark \n ";
+    in >> *(D.mark) ;
+    std::cout<<"Enter unit\n ";
+    in >> D.unit;
+    return in;
 }
