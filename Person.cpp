@@ -4,10 +4,11 @@
 Person::Person() {
     this->firstName = "";
     this->lastName = "";
-    this->id = "";
+    this->id = "a";
     this->workHours = new double;
     if (validate(id) == 0) {//WTF namoosan
-        std::cout << "id invalid";
+        std::cout << "invalid  id \n";
+        exit(1);
     }
 }
 
@@ -20,6 +21,27 @@ Person::Person(const Person &arr) {
 
 Person::~Person() {
     delete this->workHours;
+}
+std::ostream &operator<<(std::ostream &output, const Person &D) {
+    output << "firstName : " << D.firstName << "\tlastName : " << D.lastName << "id : \t"<<D.id<<"\tworkHours : " << *(D.workHours) << "\n";
+    return output;
+}
+
+std::istream & operator >>(std::istream &in, Person &D) {
+    std::cout<< "Enter firstName\n";
+    in >> D.firstName;
+    std::cout<< "Enter lastName \n ";
+    in >> D.lastName ;
+    std::cout<< "Enter id \n ";
+    in >> D.id ;
+    if(D.validate(D.id)==0)
+    {
+        std::cout << "invalid id \n";
+        exit(1);
+    }
+    std::cout<<"Enter unit\n ";
+    in >> *(D.workHours);
+    return in;
 }
 
 const std::string &Person::getFirstName() const {
@@ -82,7 +104,13 @@ bool Person::validate(std::string _id) {
         }
         return true;
     } else {
-        return false;
+        if(_id[0]=='a'){
+            return true;
+        }
+        else{
+
+            return false;
+        }
     }
 }
 

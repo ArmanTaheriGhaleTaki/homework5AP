@@ -21,6 +21,10 @@ public:
 
     const std::string &getFirstName() const;
 
+    friend std::ostream &operator<<(std::ostream &output,const Person &D);
+
+    friend std::istream & operator >>( std::istream  &in, Person &D );
+
     void setFirstName(const std::string &firstName);
 
     const std::string &getLastName() const;
