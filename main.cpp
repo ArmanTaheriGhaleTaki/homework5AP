@@ -1,6 +1,15 @@
+#include "Course.h"
+#include "Person.h"
+#include "Student.h"
 #include <iostream>
 
+
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+//    Course a;
+//    std::cin >> a;
+//    std::cout<< a;
+    Person b;
+    std::cin >> b;
+    std::cout << b;
     return 0;
 }
