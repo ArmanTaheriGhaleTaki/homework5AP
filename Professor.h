@@ -1,17 +1,25 @@
 
 #ifndef HOMEWORK5AP_PROFESSOR_H
 #define HOMEWORK5AP_PROFESSOR_H
-#include"Person.h"
-//std::string rank[4]={"Instructor","Professor Assistant","Associate Professor","Professor"};
-class Professor :public Person{
+
+#include "Person.h"
+#include <map>
+std::map<std::string , int >ranks={
+        {"Instructor",1},
+        {"Professor Assistant",2},
+        {"Associate Professor",3},
+        {"Professor",4}
+};
+class Professor : public Person {
 private:
     std::string title;
 public:
-    Professor() ;
+    Professor();
+
     virtual bool validate(std::string _id);
+
     double calculateSalary();
 };
-
 
 
 #endif

@@ -17,7 +17,7 @@ else
 }
 }
 double Professor::calculateSalary() {
-    double salary = 50000 * this->getWorkHours();
-    //use map here
+    double salary = (50000+ranks[this->title]*10000+101-((this->getId()[0]-48)*10+(this->getId()[1]-48)) +this->getWorkHours());
+
         return salary;
     }
