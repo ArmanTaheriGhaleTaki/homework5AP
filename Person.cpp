@@ -6,7 +6,7 @@ Person::Person() {
     this->lastName = "";
     this->id = "a";
     this->workHours = new double;
-    if (validate(id) == 0) {//WTF namoosan
+    if (validate(id) == 0) {
         std::cout << "invalid  id \n";
         exit(1);
     }
@@ -16,6 +16,7 @@ Person::Person(const Person &arr) {
     this->firstName = arr.firstName;
     this->lastName = arr.lastName;
     this->id = arr.id;
+    workHours = new double;
     this->workHours = arr.workHours;
 }
 
@@ -65,7 +66,10 @@ void Person::Person::setWorkHours(double *workHours) {
 }
 
 void Person::Person::setId(const std::string &id) {
-    Person::id = id;
+    if(validate(id))
+    {
+        Person::id = id;
+    }
 }
 
 void Person::Person::setLastName(const std::string &lastName) {
@@ -80,6 +84,7 @@ Person &Person::operator=(const Person &arr) {
     this->firstName = arr.firstName;
     this->lastName = arr.lastName;
     this->id = arr.id;
+    workHours = new double ;
     *this->workHours = *workHours;
     return *this;
 }

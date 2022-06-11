@@ -15,7 +15,7 @@ private:
 public:
     Person();
 
-    Person(const Person &firstName);
+    Person(const Person &arr);
 
     ~Person();
 
