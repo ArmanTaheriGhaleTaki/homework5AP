@@ -4,7 +4,6 @@
 #include "Person.h"
 #include "Course.h"
 
-
 class Student : public Person {
 public:
     Student();
@@ -12,13 +11,16 @@ public:
     Student(const Student &arr);
 
     ~Student();
-    friend std::ostream &operator<<(std::ostream &output,const Student &D);
 
-    friend std::istream & operator >>( std::istream  &in, Student &D );
-    bool validate( std::string& _id);
+    friend std::ostream &operator<<(std::ostream &output, const Student &D);
 
-    double gpa();//it's not compeleted
+    friend std::istream &operator>>(std::istream &in, Student &D);
+
+    virtual bool validate(std::string _id);
+
+    double gpa();//it's not completed
     double calculateSalary();
+
 private:
     int numOfCourses;
     Course *courses;

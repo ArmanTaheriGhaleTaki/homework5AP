@@ -5,12 +5,11 @@ Student::Student() {
     this->courses = new Course;
     this->FieldOfStudy = "";
     this->numOfCourses = 0;
-    if (validate(const_cast<std::string &>(this->getId())) == 0) {
-        std::cout << "invalid id";
-    }
 }
 
 Student::Student(const Student &arr) {
+    this->courses = new Course[arr.numOfCourses];
+    this->courses = new Course;
     this->courses = arr.courses;
     this->FieldOfStudy = arr.FieldOfStudy;
     this->numOfCourses = arr.numOfCourses;
@@ -21,28 +20,30 @@ Student::~Student() {
 }
 
 std::istream &operator>>(std::istream &in, Student &D) {
-    std::cin >> *(D.courses);
-    std::cout << "Enter firstName\n";
-//    Person *temp = static_cast<Person>(D);//how to cast Student to Person
-//    std::cin>>;
-//    in >> D.firstName;
-//    std::cout<< "Enter FieldOfStudy \n ";
-//    in >> D.lastName ;
-//    in>>id;
-//    isvalid(id);
-    std::cout << "Enter numOfCourses \n ";
+    std::cin >> static_cast<Person &>(D);
+    std::cout << "Enter FieldOfStudy\n";
+    std::getline(std::cin, D.FieldOfStudy);
+    std::cin.ignore();
+    std::cout << "Enter numOfCourses \n";
     in >> D.numOfCourses;
+    Course *temp = new Course[D.numOfCourses];
+    for (int i = 0; i < D.numOfCourses; i++) {
+        in >> temp[i];
+    }
+    D.courses = temp;
     return in;
 }
 
 std::ostream &operator<<(std::ostream &output, const Student &D) {
-//    std::cout<<D;
-    output << "courses : " << D.courses << "\tFieldOfStudy : " << D.FieldOfStudy << "\tnumOfCourses : "
-           << D.numOfCourses << "\n";
+    std::cout << static_cast<const Person &>(D);
+    output << "field of study : \t" << D.FieldOfStudy << "\n";
+    for (int i = 0; i < D.numOfCourses; i++) {
+        std::cout << static_cast<const Course &>(D.courses[i]);
+    }
     return output;
 }
 
-bool Student::validate(std::string &_id) {
+bool Student::validate(std::string _id) {
     if (Person::validate(_id) == 1 && _id[2] == '*')
         return true;
     {
@@ -51,7 +52,16 @@ bool Student::validate(std::string &_id) {
     }
 }
 
-double Student::gpa() {return 0;}//its not completed
+double Student::gpa() {
+    double GPA = 0;
+    int totalUnit = 0;
+    for (int i = 0; i < this->numOfCourses; i++) {
+        GPA += this->courses[i].get_mark() * (this->courses[i].get_unit());
+        totalUnit += this->courses[i].get_unit();
+    }
+
+    return GPA / totalUnit;
+}
 
 double Student::calculateSalary() {
     double salary = 20000 * this->getWorkHours();
