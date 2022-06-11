@@ -40,7 +40,7 @@ std::istream & operator >>(std::istream &in, Person &D) {
         std::cout << "invalid id \n";
         exit(1);
     }
-    std::cout<<"Enter unit\n ";
+    std::cout<<"Enter workHours\n ";
     in >> *(D.workHours);
     return in;
 }
