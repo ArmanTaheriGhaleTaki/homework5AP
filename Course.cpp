@@ -8,15 +8,10 @@ Course::Course() {
     *mark = 0;
 }
 
-
-std::ostream &operator<<(std::ostream &output, const Course &D) {
-    output << "name : " << D.name << "\tunit : " << D.unit << "\tmark : " << *(D.mark) << "\n";
-    return output;
-}
-
 Course::Course(const Course &arr) {
     this->name = arr.name;
     this->unit = arr.unit;
+    mark = new double;
     *(this->mark) = *(arr.mark);
 }
 
@@ -48,12 +43,17 @@ double Course::get_mark() {
     return *mark;
 }
 
-std::istream & operator >>(std::istream &in, Course &D) {
-    std::cout<< "Enter name\n";
-    getline(std::cin,D.name);
-    std::cout<< "Enter mark \n ";
-    in >> *(D.mark) ;
-    std::cout<<"Enter unit\n ";
+std::ostream &operator<<(std::ostream &output, const Course &D) {
+    output << "name : " << D.name << "\tunit : " << D.unit << "\tmark : " << *(D.mark) << "\n";
+    return output;
+}
+
+std::istream &operator>>(std::istream &in, Course &D) {
+    std::cout << "Enter name of course\n";
+    getline(std::cin, D.name);
+    std::cout << "Enter mark \n ";
+    in >> *(D.mark);
+    std::cout << "Enter unit\n ";
     in >> D.unit;
     return in;
 }
