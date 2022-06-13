@@ -32,8 +32,9 @@ public:
 
     double get_mark();
 
+    Course operator=(const Course &arr);
 
-};
+    };
 
 
 #endif

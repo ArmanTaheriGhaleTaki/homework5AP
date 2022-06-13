@@ -11,10 +11,16 @@ Course::Course() {
 Course::Course(const Course &arr) {
     this->name = arr.name;
     this->unit = arr.unit;
-    mark = new double;
+    this->mark = new double;
     *(this->mark) = *(arr.mark);
 }
 
+    Course Course:: operator =(const Course &arr) {
+        this->name = arr.name;
+        this->unit = arr.unit;
+        this->mark = new double;
+        *(this->mark) = *(arr.mark);
+    }
 Course::~Course() {
     delete this->mark;
 }
@@ -50,7 +56,7 @@ std::ostream &operator<<(std::ostream &output, const Course &D) {
 
 std::istream &operator>>(std::istream &in, Course &D) {
     std::cout << "Enter name of course\n";
-    getline(std::cin, D.name);
+    std::cin>> D.name;
     std::cout << "Enter mark \n ";
     in >> *(D.mark);
     std::cout << "Enter unit\n ";
