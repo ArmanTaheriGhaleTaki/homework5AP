@@ -91,9 +91,9 @@ Person &Person::operator=(const Person &arr) {
 
 bool Person::validate( std::string _id) {
     if (_id.size() >= 8 && _id.size() <= 10) {
-        int yearOfSignIn = ((_id[0] - 48) * 10 + (_id[1] - 48));//the different between (char)'1' and (int)1 is 48
+        int yearOfSignIn = (this->ageOfJoin());
         int indexOfNotNum = 2;
-        if (yearOfSignIn >= 0 && yearOfSignIn <= 84) {
+        if (yearOfSignIn <= 100 && yearOfSignIn >= 84) {
             for (; indexOfNotNum < _id.size() -
                                    5; indexOfNotNum++)//checks that if the string size is 8 there is one char that is not a number or if its size is 10 there are 3 none chars in the string
             {
@@ -123,3 +123,14 @@ double Person::calculateSalary() {
     double salary = 10000 * (*workHours);
     return salary;
 };
+
+int Person:: ageOfJoin(){
+            if((this->id[0] - 48) * 10 + (this->id[1] - 48)==0){
+
+                return 100;
+            }
+                else{
+
+                return ((this->id[0] - 48) * 10 + (this->id[1] - 48)==0);//the different between (char)'1' and (int)1 is 48
+            }
+}

@@ -44,6 +44,8 @@ public:
     virtual bool validate( std::string _id);
 
     double calculateSalary();
+
+    int ageOfJoin();
 };
 
 
