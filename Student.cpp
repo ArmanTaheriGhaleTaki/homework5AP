@@ -60,7 +60,7 @@ double Student::gpa() {
         totalUnit += this->courses[i].get_unit();
     }
 
-    return GPA / totalUnit;
+    return double(GPA / totalUnit);
 }
 
 double Student::calculateSalary() {
@@ -71,3 +71,16 @@ double Student::calculateSalary() {
         return salary;
     }
 };
+std::string Student::getFieldOfStudy()
+{
+    return this->FieldOfStudy;
+}
+int Student::getNumOfCourses()
+{
+    return this->numOfCourses;
+}
+Course* Student::getPointerToCourse ()
+{
+    return this->courses;
+}
+

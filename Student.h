@@ -21,6 +21,13 @@ public:
     double gpa();//it's not completed
     double calculateSalary();
 
+    std::string getFieldOfStudy();
+
+    int getNumOfCourses();
+
+    Course* getPointerToCourse();
+
+
 private:
     int numOfCourses;
     Course *courses;
